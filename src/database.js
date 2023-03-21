@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
-const url = 'mongodb://127.0.0.1:27017/articulos';
+// const url = 'mongodb://127.0.0.1:27017/articulos';
+const url = 'mongodb+srv://kevmartin:Karenymaira2407@art-samuel.3arzc2r.mongodb.net/test';
 
 mongoose.connect(url);
 
