@@ -16,7 +16,7 @@ const articuloSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    imagen: {
+    img: {
         type: String
     }
 });
