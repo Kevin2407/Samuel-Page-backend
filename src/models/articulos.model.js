@@ -15,6 +15,9 @@ const articuloSchema = new Schema({
         required: true,
 
     },
+    destacada: {
+        type: Boolean
+    },
     fecha: {
         type: Date,
         default: Date.now
