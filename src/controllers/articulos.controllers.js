@@ -14,16 +14,16 @@ articulosCtrl.listarArticulos = async (req,res) => {
 }
 
 articulosCtrl.postearArticulo = async (req,res)=>{
-    console.log('pedo');
     console.log(req.body);
     
     try {
-        const { titulo, contenido, imagen, fecha } = req.body;
+        const { titulo, contenido, imagen, destacada , fecha } = req.body;
 
         const nuevoArticulo = new Articulo({
             titulo,
             contenido,
             imagen,
+            destacada,
             fecha
         })
 
