@@ -17,7 +17,11 @@ app.set('port', process.env.PORT || 4000);
 
 // Middlewares (importante hacerlos antes de las rutas, sino no funciona)
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors({
+    origin: 'https://samuel-von-arx.netlify.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Si necesitas enviar cookies o autenticación HTTP
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
