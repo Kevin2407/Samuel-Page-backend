@@ -30,6 +30,8 @@ const router = Router();
 
 router.get('/', articulosCtrl.listarArticulos);
 router.post('/', articulosCtrl.postearArticulo);
+router.put('/', articulosCtrl.destacarArticulo);
+router.get('/destacado', articulosCtrl.obtenerDestacado);
 router.delete('/:id', articulosCtrl.eliminarArticulo);
 router.put('/:id', articulosCtrl.editarArticulo);
 router.get('/:id', articulosCtrl.obtenerArticulo);
