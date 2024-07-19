@@ -78,16 +78,7 @@
 
 
 
-
-
-import { Pool } from 'pg';
-const pool = new Pool({
-    user: 'kevinmartin',
-    host: 'localhost',
-    database: 'samuelvonarx',
-    password: '140514',
-    port: 5432,
-});
+import pool from '../database';
 
 const articulosCtrl = {};
 
@@ -117,9 +108,11 @@ articulosCtrl.postearArticulo = async (req, res) => {
     }
 };
 
+
 articulosCtrl.eliminarArticulo = async (req, res) => {
+    console.log(req.body);
     try {
-        const query = 'DELETE FROM articulos WHERE id = $1';
+        const query = 'DELETE FROM articulos WHERE _id = $1';
         const values = [req.params.id];
         await pool.query(query, values);
         res.status(200).json('borrado');
@@ -129,10 +122,11 @@ articulosCtrl.eliminarArticulo = async (req, res) => {
     }
 };
 
+
 articulosCtrl.editarArticulo = async (req, res) => {
     try {
         const { titulo, contenido, imagen, destacada, fecha } = req.body;
-        const query = 'UPDATE articulos SET titulo = $1, contenido = $2, imagen = $3, destacada = $4, fecha = $5 WHERE id = $6 RETURNING *';
+        const query = 'UPDATE articulos SET titulo = $1, contenido = $2, imagen = $3, destacada = $4, fecha = $5 WHERE _id = $6 RETURNING *';
         const values = [titulo, contenido, imagen, destacada, fecha, req.params.id];
 
         const result = await pool.query(query, values);
@@ -143,9 +137,10 @@ articulosCtrl.editarArticulo = async (req, res) => {
     }
 };
 
+
 articulosCtrl.obtenerArticulo = async (req, res) => {
     try {
-        const query = 'SELECT * FROM articulos WHERE id = $1';
+        const query = 'SELECT * FROM articulos WHERE _id = $1';
         const values = [req.params.id];
         const result = await pool.query(query, values);
         res.status(200).json(result.rows[0]);
@@ -154,5 +149,6 @@ articulosCtrl.obtenerArticulo = async (req, res) => {
         res.status(500).json('No se encontro el articulo');
     }
 };
+
 
 export default articulosCtrl;
