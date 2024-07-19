@@ -31,15 +31,13 @@ app.use(express.static(path.join(__dirname, '../public/')));
 // creo una ruta
 app.use('/api/articulos', articulosRoute);
 
-// Cargar los archivos de certificado SSL
-const sslOptions = {
-    key: fs.readFileSync(path.join(__dirname, 'certs/localhost-key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'certs/localhost.pem'))
+// Crear el servidor HTTPS
+const httpsOptions = {
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert'),
 };
 
-// Crear el servidor HTTPS
-https.createServer(sslOptions, app).listen(app.get('port'), () => {
-    console.log(path.join(__dirname, '../public/'));
+https.createServer(httpsOptions, app).listen(app.get('port'), () => {
     console.log(`Servidor corriendo en https://localhost:${app.get('port')}`);
 });
 
