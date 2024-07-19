@@ -26,21 +26,21 @@
 
 import { Pool } from 'pg';
 
-// const pool = new Pool({
-//     user: 'kevinmartin', // tu nombre de usuario de PostgreSQL
-//     host: 'localhost', // usar localhost para acceso local
-//     database: 'samuelvonarx', // el nombre de tu base de datos
-//     password: '140514', // la contraseña de tu usuario
-//     port: 5432, // el puerto por defecto de PostgreSQL
-// });
-
 const pool = new Pool({
     user: 'kevinmartin', // tu nombre de usuario de PostgreSQL
     host: 'localhost', // usar localhost para acceso local
-    database: 'prueba_samuelvonarx', // el nombre de tu base de datos
+    database: 'samuelvonarx', // el nombre de tu base de datos
     password: '140514', // la contraseña de tu usuario
-    port: 5434, // el puerto por defecto de PostgreSQL
+    port: 5432, // el puerto por defecto de PostgreSQL
 });
+
+// const pool = new Pool({
+//     user: 'kevinmartin', // tu nombre de usuario de PostgreSQL
+//     host: 'localhost', // usar localhost para acceso local
+//     database: 'prueba_samuelvonarx', // el nombre de tu base de datos
+//     password: '140514', // la contraseña de tu usuario
+//     port: 5434, // el puerto por defecto de PostgreSQL
+// });
 
 pool.connect((err, client, release) => {
     if (err) {
