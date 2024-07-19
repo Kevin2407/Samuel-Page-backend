@@ -27,7 +27,7 @@
 import { Pool } from 'pg';
 
 const pool = new Pool({
-    user: 'kevinmartin', // tu nombre de usuario de PostgreSQL
+    user: 'postgres', // tu nombre de usuario de PostgreSQL
     host: 'localhost', // usar localhost para acceso local
     database: 'samuelvonarx', // el nombre de tu base de datos
     password: '140514', // la contraseña de tu usuario
