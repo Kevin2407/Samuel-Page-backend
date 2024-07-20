@@ -78,7 +78,7 @@
 
 
 
-import pool from '../database';
+import pool from '../database.js';
 import { v4 as uuidv4 } from 'uuid';
 
 const articulosCtrl = {};

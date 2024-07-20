@@ -4,8 +4,7 @@ import cors from 'cors';
 import path from 'path';
 import https from 'https';
 import fs from 'fs';
-import './database';
-import articulosRoute from './routes/articulos.routes';
+import articulosRoute from './routes/articulos.routes.js';
 
 // settings
 
@@ -18,9 +17,8 @@ app.set('port', process.env.PORT || 4000);
 // Middlewares (importante hacerlos antes de las rutas, sino no funciona)
 app.use(morgan('dev'));
 app.use(cors({
-    origin: 'https://samuel-von-arx.netlify.app',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Si necesitas enviar cookies o autenticación HTTP
+	origin: '*',
+	optionsSuccessStatus: 200
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,15 +29,11 @@ app.use(express.static(path.join(__dirname, '../public/')));
 // creo una ruta
 app.use('/api/articulos', articulosRoute);
 
-// Crear el servidor HTTPS
-const httpsOptions = {
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert'),
-};
 
-https.createServer(httpsOptions, app).listen(app.get('port'), () => {
-    console.log(`Servidor corriendo en https://localhost:${app.get('port')}`);
-});
+
+app.listen(app.get('port'), '0.0.0.0', ()=> {
+      console.log(`Server is running on port ${app.get('port')}`);
+ });
 
 
 

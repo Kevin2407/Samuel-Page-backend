@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "backend del proyecto de samuel von arx",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "babel-node src/index.js",
     "dev": "nodemon --exec babel-node src/index.js"
@@ -21,6 +22,7 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.8",
     "nodemon": "^3.0.1"
   },
   "engines": {

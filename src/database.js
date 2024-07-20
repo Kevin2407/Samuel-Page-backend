@@ -24,7 +24,8 @@
 
 
 
-import { Pool } from 'pg';
+import pkg from 'pg';
+const { Pool } = pkg;
 
 const pool = new Pool({
     user: 'postgres', // tu nombre de usuario de PostgreSQL
@@ -32,7 +33,6 @@ const pool = new Pool({
     database: 'samuelvonarx', // el nombre de tu base de datos
     password: '140514', // la contraseña de tu usuario
     port: 5432, // el puerto por defecto de PostgreSQL
-});
 
 // const pool = new Pool({
 //     user: 'kevinmartin', // tu nombre de usuario de PostgreSQL
